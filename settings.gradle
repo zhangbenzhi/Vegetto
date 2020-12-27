@@ -1,2 +1,3 @@
 rootProject.name='Vegetto'
 include ':app'
+include ':ft_splash'
