@@ -1,0 +1,25 @@
+ext.versions = [
+        minSdk                : 19,
+        targetSdk             : 26,
+        compileSdk            : 28,
+        buildTools            : '28.0.3',
+
+        appcompat             : '1.2.0',
+        constraintlayout      : '2.0.2',
+        supportLibs           : '28.0.0',
+        immersionbar          : '3.0.0',
+        immersionbarComponents: '3.0.0',
+        eventBus              : '3.1.1'
+]
+
+ext.libraries = [
+        appcompat             : "androidx.appcompat:appcompat:$versions.appcompat",
+        constraintlayout      : "androidx.constraintlayout:constraintlayout:$versions.constraintlayout",
+        supportRecyclerView   : "com.android.support:recyclerview-v7:$versions.supportLibs",
+        // 沉浸式效果库：
+        immersionbar          : "com.gyf.immersionbar:immersionbar:$versions.immersionbar",
+        // 沉浸式效果库：
+        immersionbarComponents: "com.gyf.immersionbar:immersionbar-components:$versions.immersionbarComponents",
+        eventBus              : "org.greenrobot:eventbus:$versions.eventBus"
+]
+
