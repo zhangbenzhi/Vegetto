@@ -25,7 +25,8 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    compileOnly libraries.appcompat
-    compileOnly libraries.constraintlayout
-    implementation project(':lib_commen')
+    implementation libraries.immersionbar
+    implementation libraries.immersionbarComponents
+    implementation libraries.appcompat
+    implementation libraries.constraintlayout
 }

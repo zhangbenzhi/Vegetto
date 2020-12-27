@@ -1,18 +1,18 @@
-package com.zbz.ft_splash;
+package com.zbz.lib_commen;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.zbz.lib_commen.BaseActivity;
+import com.gyf.immersionbar.ImmersionBar;
 
-/**
- * 启动页：
- */
-public class SplashActivity extends BaseActivity {
+public class BaseActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // 沉浸式：
+        ImmersionBar.with(this).init();
     }
 }
