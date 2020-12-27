@@ -4,6 +4,9 @@
 
     <application>
         <activity
+            android:name=".AdActivity"
+            android:theme="@style/SplashTheme" />
+        <activity
             android:name=".SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
