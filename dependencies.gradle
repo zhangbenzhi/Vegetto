@@ -9,7 +9,9 @@ ext.versions = [
         supportLibs           : '28.0.0',
         immersionbar          : '3.0.0',
         immersionbarComponents: '3.0.0',
-        eventBus              : '3.1.1'
+        eventBus              : '3.1.1',
+        arouter               : '1.2.4',
+        arouter_compiler      : '1.1.4'
 ]
 
 ext.libraries = [
@@ -20,6 +22,8 @@ ext.libraries = [
         immersionbar          : "com.gyf.immersionbar:immersionbar:$versions.immersionbar",
         // 沉浸式效果库：
         immersionbarComponents: "com.gyf.immersionbar:immersionbar-components:$versions.immersionbarComponents",
-        eventBus              : "org.greenrobot:eventbus:$versions.eventBus"
+        eventBus              : "org.greenrobot:eventbus:$versions.eventBus",
+        arouter               : "com.alibaba:arouter-api:$versions.arouter",
+        arouter_compiler      : "com.alibaba:arouter-compiler:$versions.arouter_compiler"
 ]
 

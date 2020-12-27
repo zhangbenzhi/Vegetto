@@ -39,9 +39,7 @@ dependencies {
     implementation libraries.constraintlayout
 
     /** ARouter start */
-    api('com.alibaba:arouter-api:1.2.4') {
-        exclude group: 'com.android.support'
-    }
-    annotationProcessor 'com.alibaba:arouter-compiler:1.1.4'
+    api libraries.arouter
+    annotationProcessor libraries.arouter_compiler
     /** ARouter end */
 }

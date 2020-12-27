@@ -38,5 +38,5 @@ dependencies {
     implementation project(':lib_commen')
 
     // ARouter 每个模块用到的话都得添加
-    annotationProcessor 'com.alibaba:arouter-compiler:1.1.4'
+    annotationProcessor libraries.arouter_compiler
 }
