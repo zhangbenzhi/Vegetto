@@ -1,0 +1,2 @@
+rootProject.name='Vegetto'
+include ':app'

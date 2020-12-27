@@ -1,0 +1,46 @@
+#built application files
+*.ap_
+
+# files for the dex VM
+*.dex
+
+# Java class files
+*.class
+
+# generated files
+bin/
+gen/
+out/
+build/
+/*/build/
+lib_common/src/main/java/com/ume/android/lib/common/dao/
+lib_common/src/main/assets/pm.dat
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Windows thumbnail db
+Thumbs.db
+
+# OSX files
+.DS_Store
+
+# Eclipse project files
+.classpath
+.project
+
+# Android Studio
+*.iml
+.idea
+
+# Local IDEA workspace
+.idea/workspace.xml
+
+# Gradle cache
+.gradle
+
+#NDK
+obj/
+boschauto/
+ume_plugin1/libs/
+ume_plugin1/src/main/res/drawable/
