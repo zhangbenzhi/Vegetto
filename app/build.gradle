@@ -12,12 +12,16 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
     }
 
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug{
+            debuggable true
         }
     }
 
@@ -27,6 +31,8 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation project(':ft_splash')
+    implementation project(':lib_commen')
     implementation libraries.appcompat
     implementation libraries.constraintlayout
+    //kapt 'com.alibaba:arouter-compiler:1.1.4'
 }

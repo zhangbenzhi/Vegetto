@@ -3,11 +3,14 @@ package com.zbz.ft_splash;
 import android.os.Bundle;
 import android.widget.ImageView;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.zbz.lib_commen.BaseActivity;
+import com.zbz.lib_commen.config.RouterConfig;
 
 /**
  * 广告:
  */
+@Route(path = RouterConfig.SplashModule.ADRouter)
 public class AdActivity extends BaseActivity {
 
     private ImageView mAdIv;

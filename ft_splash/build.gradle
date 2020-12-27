@@ -11,6 +11,14 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        /** ARouter start 每个模块用到的话都得添加*/
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [moduleName: project?.getName()]
+            }
+        }
+        /** ARouter end */
     }
 
     buildTypes {
@@ -28,4 +36,7 @@ dependencies {
     compileOnly libraries.appcompat
     compileOnly libraries.constraintlayout
     implementation project(':lib_commen')
+
+    // ARouter 每个模块用到的话都得添加
+    annotationProcessor 'com.alibaba:arouter-compiler:1.1.4'
 }

@@ -11,6 +11,14 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        /** ARouter start */
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [moduleName: project?.getName()]
+            }
+        }
+        /** ARouter end */
     }
 
     buildTypes {
@@ -29,4 +37,11 @@ dependencies {
     implementation libraries.immersionbarComponents
     implementation libraries.appcompat
     implementation libraries.constraintlayout
+
+    /** ARouter start */
+    api('com.alibaba:arouter-api:1.2.4') {
+        exclude group: 'com.android.support'
+    }
+    annotationProcessor 'com.alibaba:arouter-compiler:1.1.4'
+    /** ARouter end */
 }
