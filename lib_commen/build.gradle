@@ -28,6 +28,8 @@ android {
         }
     }
 
+    //资源文件加上前缀,只是个提示作用，需要手动修改名称
+    resourcePrefix "${project.name}_"
 }
 
 dependencies {
