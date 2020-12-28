@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="lib_ui_out_circle_color">#e91e0c</color>
+    <color name="lib_ui_innner_circle_color">#bbbbbb</color>
+    <color name="lib_ui_white">#e91e0c</color>
+</resources>
