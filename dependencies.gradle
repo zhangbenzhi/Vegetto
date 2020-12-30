@@ -11,19 +11,19 @@ ext.versions = [
         immersionbarComponents: '3.0.0',
         eventBus              : '3.1.1',
         arouter               : '1.2.4',
-        arouter_compiler      : '1.1.4'
+        arouter_compiler      : '1.1.4',
+        glide                 : '4.9.0'
 ]
 
 ext.libraries = [
         appcompat             : "androidx.appcompat:appcompat:$versions.appcompat",
         constraintlayout      : "androidx.constraintlayout:constraintlayout:$versions.constraintlayout",
         supportRecyclerView   : "com.android.support:recyclerview-v7:$versions.supportLibs",
-        // 沉浸式效果库：
         immersionbar          : "com.gyf.immersionbar:immersionbar:$versions.immersionbar",
-        // 沉浸式效果库：
         immersionbarComponents: "com.gyf.immersionbar:immersionbar-components:$versions.immersionbarComponents",
         eventBus              : "org.greenrobot:eventbus:$versions.eventBus",
         arouter               : "com.alibaba:arouter-api:$versions.arouter",
-        arouter_compiler      : "com.alibaba:arouter-compiler:$versions.arouter_compiler"
+        arouter_compiler      : "com.alibaba:arouter-compiler:$versions.arouter_compiler",
+        glide                 : "com.github.bumptech.glide:glide:$versions.glide"
 ]
 
