@@ -7,7 +7,8 @@ import android.widget.Toast;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.zbz.lib_commen.BaseActivity;
 import com.zbz.lib_commen.config.RouterConfig;
-import com.zbz.lib_net.imageloader.UmeImageLoader;
+import com.zbz.lib_net.imageloader.VegettoImage;
+import com.zbz.lib_net.imageloader.VegettoImageParams;
 import com.zbz.lib_ui.CountDownView;
 
 import java.util.ArrayList;
@@ -37,10 +38,11 @@ public class AdActivity extends BaseActivity {
         mAdList.add("https://img.tukuppt.com//ad_preview/00/11/77/5c994ed9d311e.jpg!/fw/780");
         mAdList.add("https://img.tukuppt.com//ad_preview/00/09/73/5c991f38dbd5f.jpg!/fw/780");
 
-        UmeImageLoader.with(this)
+        String imageUrl = mAdList.get(new Random().nextInt(3));
+        VegettoImage.with(this)
+                .load(imageUrl)
                 .placeholder(-1)
                 .error(-1)
-                .load(mAdList.get(new Random().nextInt(3)))
                 .centerCrop()
                 .into(mAdIv);
     }

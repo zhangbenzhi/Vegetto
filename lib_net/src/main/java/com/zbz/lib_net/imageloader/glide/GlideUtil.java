@@ -23,8 +23,8 @@ import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.target.Target;
 import com.bumptech.glide.request.transition.Transition;
+import com.zbz.lib_net.imageloader.VegettoImageParams;
 import com.zbz.lib_net.imageloader.mode.DiskCacheMode;
-import com.zbz.lib_net.imageloader.UmeImageLoader;
 import com.zbz.lib_net.imageloader.mode.UmePriority;
 import com.zbz.lib_net.imageloader.transform.GlideFitXYTransform;
 import com.zbz.lib_net.imageloader.transform.GlideRoundTransform;
@@ -42,89 +42,88 @@ import java.util.concurrent.ExecutionException;
 public class GlideUtil {
 
     @SuppressLint("Ume_ImageLoadUse")
-    public static Bitmap getImageBitMap(UmeImageLoader umeImageLoader) throws ExecutionException, InterruptedException {
-        return Glide.with(umeImageLoader.getContext())
+    public static Bitmap getImageBitMap(VegettoImageParams vegettoImageParams) throws ExecutionException, InterruptedException {
+        return Glide.with(vegettoImageParams.getContext())
                 .asBitmap()
-                .load(umeImageLoader.getLoadUrl())
+                .load(vegettoImageParams.getLoadUrl())
                 .centerCrop()
                 .submit(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL)
                 .get();
     }
 
     @SuppressLint("Ume_ImageLoadUse")
-    public static File getFile(UmeImageLoader umeImageLoader) throws ExecutionException, InterruptedException {
-        return Glide.with(umeImageLoader.getContext())
+    public static File getFile(VegettoImageParams vegettoImageParams) throws ExecutionException, InterruptedException {
+        return Glide.with(vegettoImageParams.getContext())
                 .downloadOnly()
-                .load(umeImageLoader.getLoadUrl())
-                .submit(umeImageLoader.getOverrideWidth(), umeImageLoader.getOverrideHeight())
+                .load(vegettoImageParams.getLoadUrl())
+                .submit(vegettoImageParams.getOverrideWidth(), vegettoImageParams.getOverrideHeight())
                 .get();
     }
 
     @SuppressLint("Ume_ImageLoadUse")
-    public static void loadImageAsDrawable(final UmeImageLoader umeImageLoader) {
-        if (umeImageLoader == null) {
+    public static void loadImageAsDrawable(final VegettoImageParams vegettoImageParams) {
+        if (vegettoImageParams == null) {
             return;
         }
-        RequestBuilder<Drawable> requestBuilder = Glide.with(umeImageLoader.getContext()).load(umeImageLoader.getLoadUrl());
-        load(requestBuilder, umeImageLoader);
+        RequestBuilder<Drawable> requestBuilder = Glide.with(vegettoImageParams.getContext()).load(vegettoImageParams.getLoadUrl());
+        load(requestBuilder, vegettoImageParams);
     }
 
     @SuppressLint("Ume_ImageLoadUse")
-    public static void loadImageAsBitmap(final UmeImageLoader umeImageLoader) {
-        if (umeImageLoader == null) {
+    public static void loadImageAsBitmap(final VegettoImageParams vegettoImageParams) {
+        if (vegettoImageParams == null) {
             return;
         }
-        RequestBuilder<Bitmap> requestBuilder = Glide.with(umeImageLoader.getContext()).asBitmap().load(umeImageLoader.getLoadUrl());
-        load(requestBuilder, umeImageLoader);
+        RequestBuilder<Bitmap> requestBuilder = Glide.with(vegettoImageParams.getContext()).asBitmap().load(vegettoImageParams.getLoadUrl());
+        load(requestBuilder, vegettoImageParams);
     }
 
     @SuppressLint("Ume_ImageLoadUse")
-    public static void loadImageAsGif(final UmeImageLoader umeImageLoader) {
-        if (umeImageLoader == null) {
+    public static void loadImageAsGif(final VegettoImageParams vegettoImageParams) {
+        if (vegettoImageParams == null) {
             return;
         }
-        RequestBuilder<GifDrawable> requestBuilder = Glide.with(umeImageLoader.getContext()).asGif().load(umeImageLoader.getLoadUrl());
-        load(requestBuilder, umeImageLoader);
+        RequestBuilder<GifDrawable> requestBuilder = Glide.with(vegettoImageParams.getContext()).asGif().load(vegettoImageParams.getLoadUrl());
+        load(requestBuilder, vegettoImageParams);
     }
-
 
     @SuppressLint("CheckResult")
-    private static void load(RequestBuilder requestBuilder, final UmeImageLoader umeImageLoader) {
-        BaseRequestOptions baseRequestOptions = requestBuilder.load(umeImageLoader.getLoadUrl())
-                .skipMemoryCache(umeImageLoader.isSkipMemoryCache())
-                .onlyRetrieveFromCache(umeImageLoader.isOnlyRetrieveFromCache())
-                .priority(mapToPriority(umeImageLoader.getPriority()));
-        if (umeImageLoader.getDiskCacheMode() != DiskCacheMode.NOT_SET) {
-            baseRequestOptions.diskCacheStrategy(mapToDiskCacheStrategy(umeImageLoader.getDiskCacheMode()));
+    private static <T> void load(RequestBuilder requestBuilder, final VegettoImageParams vegettoImageParams) {
+        BaseRequestOptions baseRequestOptions = requestBuilder.load(vegettoImageParams.getLoadUrl())
+                .skipMemoryCache(vegettoImageParams.isSkipMemoryCache())
+                .onlyRetrieveFromCache(vegettoImageParams.isOnlyRetrieveFromCache())
+                .priority(mapToPriority(vegettoImageParams.getPriority()));
+        if (vegettoImageParams.getDiskCacheMode() != DiskCacheMode.NOT_SET) {
+            baseRequestOptions.diskCacheStrategy(mapToDiskCacheStrategy(vegettoImageParams.getDiskCacheMode()));
         }
-        if (umeImageLoader.getPlaceholder() != -1) {
+        if (vegettoImageParams.getPlaceholder() != -1) {
             // 占位图：
-            baseRequestOptions.placeholder(umeImageLoader.getPlaceholder());
+            baseRequestOptions.placeholder(vegettoImageParams.getPlaceholder());
         }
-        if (umeImageLoader.getErrorPlaceholder() != -1) {
+        if (vegettoImageParams.getErrorPlaceholder() != -1) {
             // 失败图：
-            baseRequestOptions.error(umeImageLoader.getErrorPlaceholder());
+            baseRequestOptions.error(vegettoImageParams.getErrorPlaceholder());
         }
-        if (umeImageLoader.getOverrideWidth() != Target.SIZE_ORIGINAL
-                && umeImageLoader.getOverrideHeight() != Target.SIZE_ORIGINAL) {
-            baseRequestOptions.override(umeImageLoader.getOverrideWidth(), umeImageLoader.getOverrideHeight());
+        if (vegettoImageParams.getOverrideWidth() != Target.SIZE_ORIGINAL
+                && vegettoImageParams.getOverrideHeight() != Target.SIZE_ORIGINAL) {
+            baseRequestOptions.override(vegettoImageParams.getOverrideWidth(), vegettoImageParams.getOverrideHeight());
         }
-        if (umeImageLoader.isDontAnimation()) {
+        if (vegettoImageParams.isDontAnimation()) {
             // 禁止动画，设置后gif也不会动了
             baseRequestOptions = baseRequestOptions.dontAnimate();
         }
         List<Transformation<Bitmap>> transformations = new ArrayList<>();
-        if (umeImageLoader.isCenterCrop()) {
+        if (vegettoImageParams.isCenterCrop()) {
             // centerCrop:
             transformations.add(new CenterCrop());
-        } else if (umeImageLoader.isFitXY()) {
+        } else if (vegettoImageParams.isFitXY()) {
             // fitXY:
             transformations.add(new GlideFitXYTransform());
         }
-        if (umeImageLoader.getRounds() != null) {
+        if (vegettoImageParams.getRounds() != null) {
             // 圆角：
-            transformations.add(new GlideRoundTransform(umeImageLoader.getRounds()));
-        } else if (umeImageLoader.isClipToCircle()) {
+            transformations.add(new GlideRoundTransform(vegettoImageParams.getRounds()));
+        } else if (vegettoImageParams.isClipToCircle()) {
             // 圆：
             transformations.add(new CircleCrop());
         }
@@ -132,20 +131,19 @@ public class GlideUtil {
             baseRequestOptions = baseRequestOptions.transform(new MultiTransformation<>(transformations));
         }
         if (baseRequestOptions instanceof RequestBuilder) {
-            if (umeImageLoader.getSimpleLoadImageListener() != null) {
-                baseRequestOptions = ((RequestBuilder) baseRequestOptions).listener(new RequestListener() {
+            if (vegettoImageParams.getSimpleLoadImageListener() != null) {
+                ((RequestBuilder) baseRequestOptions).listener(new RequestListener() {
                     @Override
                     public boolean onLoadFailed(@Nullable GlideException e, Object model, Target target, boolean isFirstResource) {
-                        return umeImageLoader.getSimpleLoadImageListener().onLoadFailed(e, isFirstResource);
+                        return vegettoImageParams.getSimpleLoadImageListener().onLoadFailed(e, isFirstResource);
                     }
 
                     @Override
                     public boolean onResourceReady(Object resource, Object model, Target target, DataSource dataSource, boolean isFirstResource) {
-                        return umeImageLoader.getSimpleLoadImageListener().onResourceReady(resource, isFirstResource);
+                        return vegettoImageParams.getSimpleLoadImageListener().onResourceReady(resource, isFirstResource);
                     }
                 });
-            }
-            if (umeImageLoader.getOnLoadImageListener() != null) {
+            } else if (vegettoImageParams.getOnLoadImageListener() != null) {
                 ((RequestBuilder) baseRequestOptions).into(new CustomTarget<Object>() {
                     @Override
                     public void onResourceReady(@NonNull Object resource, @Nullable Transition<? super Object> transition) {
@@ -153,22 +151,22 @@ public class GlideUtil {
                             ((GifDrawable) resource).setLoopCount(GifDrawable.LOOP_FOREVER);
                             ((GifDrawable) resource).start();
                         }
-                        umeImageLoader.getOnLoadImageListener().onResourceReady(resource);
+                        vegettoImageParams.getOnLoadImageListener().onResourceReady(resource);
                     }
 
                     @Override
                     public void onLoadCleared(@Nullable Drawable placeholder) {
-                        umeImageLoader.getOnLoadImageListener().onLoadFailed("加载图片失败");
+                        vegettoImageParams.getOnLoadImageListener().onLoadFailed("加载图片失败");
                     }
 
                     @Override
                     public void onLoadFailed(@Nullable Drawable errorDrawable) {
                         super.onLoadFailed(errorDrawable);
-                        umeImageLoader.getOnLoadImageListener().onLoadFailed("加载图片失败");
+                        vegettoImageParams.getOnLoadImageListener().onLoadFailed("加载图片失败");
                     }
                 });
-            } else if (umeImageLoader.getImageView() != null) {
-                requestBuilder.into(umeImageLoader.getImageView());
+            } else if (vegettoImageParams.getImageView() != null) {
+                requestBuilder.into(vegettoImageParams.getImageView());
             }
         }
     }
@@ -186,6 +184,7 @@ public class GlideUtil {
                 diskCacheStrategy = DiskCacheStrategy.DATA;
                 break;
             case DiskCacheMode.RESULT:
+            case DiskCacheMode.NOT_SET:
                 diskCacheStrategy = DiskCacheStrategy.RESOURCE;
                 break;
         }

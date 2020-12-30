@@ -1,7 +1,5 @@
 package com.zbz.lib_net.imageloader.listener;
 
-import com.bumptech.glide.load.engine.GlideException;
-
 /**
  * @author 张本志
  * @date 2020/7/24 16:51
@@ -10,5 +8,5 @@ import com.bumptech.glide.load.engine.GlideException;
 public interface SimpleLoadImageListener {
     boolean onResourceReady(Object resource, boolean isFirstResource);
 
-    boolean onLoadFailed(GlideException e, boolean isFirstResource);
+    boolean onLoadFailed(Exception e, boolean isFirstResource);
 }
