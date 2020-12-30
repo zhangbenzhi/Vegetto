@@ -1,9 +1,9 @@
 package com.zbz.lib_net.imageloader;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.widget.ImageView;
 
-import com.zbz.lib_net.imageloader.glide.GlideUtil;
 import com.zbz.lib_net.imageloader.listener.OnLoadImageListener;
 import com.zbz.lib_net.imageloader.listener.SimpleLoadImageListener;
 import com.zbz.lib_net.imageloader.mode.DiskCacheMode;
@@ -19,6 +19,28 @@ import java.io.File;
 public class VegettoImage {
 
     private VegettoImage() {
+    }
+
+    /**
+     * 加载返回File文件：
+     */
+    public static File getFile(Context context, String url) {
+        try {
+            return GlideUtil.getFile(context, url);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    /**
+     * 加载返回Bitmap:
+     */
+    public static Bitmap getBitmap(Context context, String url) {
+        try {
+            return GlideUtil.getImageBitMap(context, url);
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     public static VegettoImageManager with(Context context) {

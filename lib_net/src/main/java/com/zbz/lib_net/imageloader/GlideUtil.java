@@ -1,6 +1,7 @@
-package com.zbz.lib_net.imageloader.glide;
+package com.zbz.lib_net.imageloader;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 
@@ -42,26 +43,26 @@ import java.util.concurrent.ExecutionException;
 public class GlideUtil {
 
     @SuppressLint("Ume_ImageLoadUse")
-    public static Bitmap getImageBitMap(VegettoImageParams vegettoImageParams) throws ExecutionException, InterruptedException {
-        return Glide.with(vegettoImageParams.getContext())
+    static Bitmap getImageBitMap(Context context, String url) throws ExecutionException, InterruptedException {
+        return Glide.with(context)
                 .asBitmap()
-                .load(vegettoImageParams.getLoadUrl())
+                .load(url)
                 .centerCrop()
                 .submit(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL)
                 .get();
     }
 
     @SuppressLint("Ume_ImageLoadUse")
-    public static File getFile(VegettoImageParams vegettoImageParams) throws ExecutionException, InterruptedException {
-        return Glide.with(vegettoImageParams.getContext())
+    static File getFile(Context context, String url) throws ExecutionException, InterruptedException {
+        return Glide.with(context)
                 .downloadOnly()
-                .load(vegettoImageParams.getLoadUrl())
-                .submit(vegettoImageParams.getOverrideWidth(), vegettoImageParams.getOverrideHeight())
+                .load(url)
+                .submit(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL)
                 .get();
     }
 
     @SuppressLint("Ume_ImageLoadUse")
-    public static void loadImageAsDrawable(final VegettoImageParams vegettoImageParams) {
+    static void loadImageAsDrawable(final VegettoImageParams vegettoImageParams) {
         if (vegettoImageParams == null) {
             return;
         }
@@ -70,7 +71,7 @@ public class GlideUtil {
     }
 
     @SuppressLint("Ume_ImageLoadUse")
-    public static void loadImageAsBitmap(final VegettoImageParams vegettoImageParams) {
+    static void loadImageAsBitmap(final VegettoImageParams vegettoImageParams) {
         if (vegettoImageParams == null) {
             return;
         }
@@ -79,7 +80,7 @@ public class GlideUtil {
     }
 
     @SuppressLint("Ume_ImageLoadUse")
-    public static void loadImageAsGif(final VegettoImageParams vegettoImageParams) {
+    static void loadImageAsGif(final VegettoImageParams vegettoImageParams) {
         if (vegettoImageParams == null) {
             return;
         }
@@ -88,7 +89,7 @@ public class GlideUtil {
     }
 
     @SuppressLint("CheckResult")
-    private static <T> void load(RequestBuilder requestBuilder, final VegettoImageParams vegettoImageParams) {
+    static <T> void load(RequestBuilder requestBuilder, final VegettoImageParams vegettoImageParams) {
         BaseRequestOptions baseRequestOptions = requestBuilder.load(vegettoImageParams.getLoadUrl())
                 .skipMemoryCache(vegettoImageParams.isSkipMemoryCache())
                 .onlyRetrieveFromCache(vegettoImageParams.isOnlyRetrieveFromCache())

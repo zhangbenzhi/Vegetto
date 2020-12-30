@@ -1,12 +1,10 @@
 package com.zbz.lib_net.imageloader;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.widget.ImageView;
 
 import com.bumptech.glide.request.target.Target;
 import com.zbz.lib_net.R;
-import com.zbz.lib_net.imageloader.glide.GlideUtil;
 import com.zbz.lib_net.imageloader.listener.OnLoadImageListener;
 import com.zbz.lib_net.imageloader.listener.SimpleLoadImageListener;
 import com.zbz.lib_net.imageloader.mode.DiskCacheMode;
@@ -80,28 +78,6 @@ public class VegettoImageParams {
 
     public SimpleLoadImageListener getSimpleLoadImageListener() {
         return simpleLoadImageListener;
-    }
-
-    /**
-     * 加载返回File文件：
-     */
-    public File getFile() {
-        try {
-            return GlideUtil.getFile(this);
-        } catch (Exception e) {
-            return null;
-        }
-    }
-
-    /**
-     * 加载返回Bitmap:
-     */
-    public Bitmap getBitmap() {
-        try {
-            return GlideUtil.getImageBitMap(this);
-        } catch (Exception e) {
-            return null;
-        }
     }
 
     public boolean isOnlyRetrieveFromCache() {
