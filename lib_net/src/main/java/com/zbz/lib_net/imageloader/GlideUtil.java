@@ -40,7 +40,7 @@ import java.util.concurrent.ExecutionException;
  * @date 2020/7/16 09:54
  * @description Glide工具类
  */
-public class GlideUtil {
+class GlideUtil {
 
     @SuppressLint("Ume_ImageLoadUse")
     static Bitmap getImageBitMap(Context context, String url) throws ExecutionException, InterruptedException {

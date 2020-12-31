@@ -17,7 +17,7 @@ import java.io.File;
  * @date 2020/7/15 16:18
  * @description 贝吉特图片加载参数
  */
-public class VegettoImageParams {
+class VegettoImageParams {
     private static final String TAG = VegettoImageParams.class.getSimpleName();
 
     // 网络图片url

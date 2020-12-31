@@ -8,7 +8,6 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.zbz.lib_commen.BaseActivity;
 import com.zbz.lib_commen.config.RouterConfig;
 import com.zbz.lib_net.imageloader.VegettoImage;
-import com.zbz.lib_net.imageloader.VegettoImageParams;
 import com.zbz.lib_ui.CountDownView;
 
 import java.util.ArrayList;
