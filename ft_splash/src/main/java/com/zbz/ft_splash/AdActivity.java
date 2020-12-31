@@ -1,10 +1,11 @@
 package com.zbz.ft_splash;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.zbz.lib_commen.BaseActivity;
 import com.zbz.lib_commen.config.RouterConfig;
 import com.zbz.lib_net.imageloader.VegettoImage;
@@ -53,8 +54,19 @@ public class AdActivity extends BaseActivity {
         mCountDownView.beginCountDown(5 * 1000, new CountDownView.OnCountDownListener() {
             @Override
             public void onFinish() {
-                Toast.makeText(AdActivity.this, "倒计时结束", Toast.LENGTH_SHORT).show();
+                toMain();
             }
         });
+        mCountDownView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toMain();
+            }
+        });
+    }
+
+    private void toMain() {
+        ARouter.getInstance().build(RouterConfig.MainModule.MainRouter).navigation();
+        finish();
     }
 }

@@ -1,11 +1,10 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion versions.compileSdk
     buildToolsVersion versions.buildTools
 
     defaultConfig {
-        applicationId "com.zbz.vegetto"
         minSdkVersion versions.minSdk
         targetSdkVersion versions.targetSdk
         versionCode 1
@@ -13,6 +12,13 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
+        /** ARouter start 每个模块用到的话都得添加*/
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [moduleName: project?.getName()]
+            }
+        }
+        /** ARouter end */
     }
 
     buildTypes {
@@ -20,22 +26,15 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
-        debug {
-            debuggable true
-        }
     }
-
-    //资源文件加上前缀,只是个提示作用，需要手动修改名称
-    resourcePrefix "${project.name}_"
-
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation libraries.appcompat
-    implementation libraries.constraintlayout
-
-    implementation project(':ft_splash')
-    implementation project(':ft_main')
+    compileOnly libraries.appcompat
+    compileOnly libraries.constraintlayout
     implementation project(':lib_commen')
+
+    // ARouter 每个模块用到的话都得添加
+    annotationProcessor libraries.arouter_compiler
 }

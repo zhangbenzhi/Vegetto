@@ -155,6 +155,14 @@ public class CountDownView extends View {
         countDownTimer.start();
     }
 
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        if (countDownTimer != null) {
+            countDownTimer.cancel();
+        }
+    }
+
     public interface OnCountDownListener {
         void onFinish();
     }
