@@ -30,4 +30,5 @@ dependencies {
 
     implementation libraries.appcompat
     implementation libraries.constraintlayout
+    api libraries.recyclerView
 }

@@ -18,7 +18,7 @@ ext.versions = [
 ext.libraries = [
         appcompat             : "androidx.appcompat:appcompat:$versions.appcompat",
         constraintlayout      : "androidx.constraintlayout:constraintlayout:$versions.constraintlayout",
-        supportRecyclerView   : "com.android.support:recyclerview-v7:$versions.supportLibs",
+        recyclerView   : "com.android.support:recyclerview-v7:$versions.supportLibs",
         immersionbar          : "com.gyf.immersionbar:immersionbar:$versions.immersionbar",
         immersionbarComponents: "com.gyf.immersionbar:immersionbar-components:$versions.immersionbarComponents",
         eventBus              : "org.greenrobot:eventbus:$versions.eventBus",
