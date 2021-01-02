@@ -51,7 +51,7 @@ public class AdActivity extends BaseActivity {
         mAdIv = findViewById(R.id.iv_ad);
         mAdIv.setImageResource(R.drawable.img_ad);
         CountDownView mCountDownView = findViewById(R.id.view_count_down);
-        mCountDownView.beginCountDown(5 * 1000, new CountDownView.OnCountDownListener() {
+        mCountDownView.beginCountDown(2 * 1000, new CountDownView.OnCountDownListener() {
             @Override
             public void onFinish() {
                 toMain();

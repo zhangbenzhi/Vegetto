@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 
 android {
+    ndkVersion "21.0.6113669"
     compileSdkVersion versions.compileSdk
     buildToolsVersion versions.buildTools
 
@@ -30,6 +31,12 @@ android {
 
     //资源文件加上前缀,只是个提示作用，需要手动修改名称
     resourcePrefix "${project.name}_"
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
 }
 
 dependencies {
@@ -41,6 +48,7 @@ dependencies {
     implementation libraries.constraintlayout
     api project(':lib_ui')
     api project(':lib_net')
+    api project(':lib_player')
 
     /** ARouter start */
     api libraries.arouter

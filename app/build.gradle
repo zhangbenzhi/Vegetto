@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
+    //https://blog.csdn.net/mowwwcom/article/details/106852156
+    ndkVersion "21.0.6113669"
     compileSdkVersion versions.compileSdk
     buildToolsVersion versions.buildTools
 
@@ -13,6 +15,10 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
+        ndk {
+            //设置支持的SO库架构
+            abiFilters 'armeabi'
+        }
     }
 
     buildTypes {
@@ -27,7 +33,6 @@ android {
 
     //资源文件加上前缀,只是个提示作用，需要手动修改名称
     resourcePrefix "${project.name}_"
-
 }
 
 dependencies {

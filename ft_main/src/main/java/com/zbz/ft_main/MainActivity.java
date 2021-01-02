@@ -1,7 +1,6 @@
 package com.zbz.ft_main;
 
 import android.os.Bundle;
-import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,6 +10,8 @@ import com.zbz.lib_commen.BaseActivity;
 import com.zbz.lib_commen.config.RouterConfig;
 import com.zbz.lib_commen.recyclerview.adapter.BaseSimpleAdapter;
 import com.zbz.lib_commen.recyclerview.viewholder.BaseViewHolder;
+import com.zbz.lib_player.NiceVideoPlayer;
+import com.zbz.lib_player.TxVideoPlayerController;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,12 +20,21 @@ import java.util.List;
 public class MainActivity extends BaseActivity {
 
     private BaseSimpleAdapter<String> baseSimpleAdapter;
+    private String[] testUrl = {
+            "http://vjs.zencdn.net/v/oceans.mp4",
+            "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4",
+            "https://media.w3.org/2010/05/sintel/trailer.mp4"
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        /*NiceVideoPlayer niceVideoPlayer = findViewById(R.id.player);
+        niceVideoPlayer.setController(new TxVideoPlayerController(this));
+        niceVideoPlayer.setUp("http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4", null);
+        niceVideoPlayer.start();*/
         initView();
         setData();
     }
@@ -43,8 +53,10 @@ public class MainActivity extends BaseActivity {
         baseSimpleAdapter = new BaseSimpleAdapter<String>(this, R.layout.item_main_rv) {
             @Override
             public void onBindViewHolder(BaseViewHolder baseViewHolder, String item, int position) {
-                TextView textView = baseViewHolder.getView(R.id.tv_name, TextView.class);
-                textView.setText(item);
+                NiceVideoPlayer niceVideoPlayer = baseViewHolder.getView(R.id.player, NiceVideoPlayer.class);
+                niceVideoPlayer.setController(new TxVideoPlayerController(MainActivity.this));
+                niceVideoPlayer.setUp(testUrl[position % 3], null);
+                niceVideoPlayer.start();
             }
         };
         rv.setAdapter(baseSimpleAdapter);
